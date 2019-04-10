@@ -1,0 +1,8 @@
+*.swo
+*.swp
+*~
+
+/vendor/
+/.idea/
+bin/
+debug

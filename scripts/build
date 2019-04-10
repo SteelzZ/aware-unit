@@ -1,0 +1,12 @@
+#!/bin/bash -e
+if [[ -z "$1" || -z "$2" ]]; then
+	echo "Usage: ${0} app version" >> /dev/stderr
+	exit 255
+fi
+
+ORG_PATH="github.com/SteelzZ"
+REPO_PATH="${ORG_PATH}/aware-unit"
+
+echo "Building [$1] Version: $2"
+CGO_ENABLED=0 go build -ldflags "-X main.AppVersion=$2" -o bin/$1 -a -installsuffix netgo ${REPO_PATH}/cmd/$1
+chmod +x bin/$1
